@@ -4,6 +4,6 @@ resource "aws_vpc" "eks" {
   enable_dns_hostnames = true
 
   tags = {
-    Name = "${var.cluster_name}"
+    Name = "${var.cluster_name}-vpc"
   }
 }

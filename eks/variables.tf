@@ -1,12 +1,12 @@
 variable "cluster_name" {
   type        = string
   description = "eks cluster name"
-  default     = "eks-test"
+  default     = "tv-eks-cluster"
 }
 
 variable "cluster_version" {
   type        = string
-  default     = "1.22"
+  default     = "1.24"
   description = "eks cluster version"
 }
 
