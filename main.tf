@@ -16,4 +16,9 @@ module "eks" {
 
 module "workbench" {
   source = "./workbench"
+
+  vpc_id             = module.vpc.vpc_id
+  public_subnet_ids  = module.vpc.vpc_public_subnet_ids
+  my_ip_cidr = var.my_ip_cidr
 }
+

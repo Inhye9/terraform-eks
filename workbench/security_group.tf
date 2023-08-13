@@ -1,11 +1,13 @@
 resource "aws_security_group" "instance" {
-  name = var.security_group_name
+  name 			  = var.security_group_name
+  vpc_id		  = var.vpc_id 
+  #subnet_id              = var.public_subnet_ids[0]
 
   ingress {
     from_port   = 22 
     to_port     = 22 
     protocol    = "tcp"
-    cidr_blocks = var.my_ip_address
+    cidr_blocks = ["${var.my_ip_cidr}/24"]
   }
 
   egress {
@@ -20,18 +22,4 @@ resource "aws_security_group" "instance" {
   }
 }
 
-variable "my_ip_address" { 
-  type        = string
-}
-
-variable "security_group_name" {
-  description = "The name of the security group"
-  type        = string
-  default     = "${var.cluster_name}-workbench-sg"
-}
-
-output "public_ip" {
-  value       = aws_instance.example.public_ip
-  description = "The public IP of the Instance"
-}
 
