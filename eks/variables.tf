@@ -57,15 +57,15 @@ variable "security_groups" {
         to_port          = 443
         cidr_blocks      = ["0.0.0.0/0"]
         ipv6_cidr_blocks = null
-      },
-      {
-        description      = "Allow HTTP"
-        protocol         = "tcp"
-        from_port        = 80
-        to_port          = 80
-        cidr_blocks      = ["0.0.0.0/0"]
-        ipv6_cidr_blocks = null
-      },
+      }
+      #,{
+      #  description      = "Allow HTTP"
+      #  protocol         = "tcp"
+      #  from_port        = 80
+      #  to_port          = 80
+      #  cidr_blocks      = ["0.0.0.0/0"]
+      #  ipv6_cidr_blocks = null
+      #},
     ]
     egress = [
       {

@@ -21,8 +21,14 @@ variable "public_subnet_ids" {
   description = "public subnet id"
 }
 
-
 variable "my_ip_cidr"{
   type        = string
 }
+
+variable "my_key_pair"{
+  description = "key pair for workbench"
+  type 	      = string
+  default     = "ih-bastion-ec2-key"
+}
+
 

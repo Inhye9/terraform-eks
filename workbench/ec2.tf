@@ -2,10 +2,16 @@ resource "aws_instance" "workbench" {
   #ami                    = "ami-0a98b53e9d1e1fae2" #Amazon Linux 2 AMI (HVM) 
   ami  			 = "ami-027ce4ce0590e3c98"
   instance_type          = "t2.nano"
+
   #vpc_id 		 = var.vpc_id
   subnet_id		 = var.public_subnet_ids[0]
   #subnet_id		 = slice(flatten(var.public_subnet_ids),0,2)
+
   vpc_security_group_ids = [aws_security_group.instance.id]
+  key_name		 = aws_key_pair.tf-key-pair.key_name 
+
+  associate_public_ip_address = true
+
 
   user_data = <<-EOF
   #!/bin/bash
@@ -30,5 +36,6 @@ resource "aws_instance" "workbench" {
 
   tags = {
     Name = "${var.workbench_name}"
+
   }
 }
